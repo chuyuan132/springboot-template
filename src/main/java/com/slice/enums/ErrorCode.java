@@ -1,0 +1,25 @@
+package com.slice.enums;
+
+import lombok.Getter;
+
+@Getter
+public enum ErrorCode {
+
+    SUCCESS(200, "成功"),
+    SYSTEM_ERROR(500, "系统错误"),
+    NO_AUTH_ERROR(401,"无权限"),
+    PARAMS_ERROR(400,"参数错误");
+
+    private final int code;
+
+    private final String message;
+
+    ErrorCode(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+
+
+
+}

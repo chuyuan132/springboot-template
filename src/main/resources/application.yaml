@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: sprint-boot-template
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/my_db
+  jackson:
+    property-naming-strategy: SNAKE_CASE  # 将驼峰自动转为蛇形
+server:
+  address: 127.0.0.1
+  port: 8001
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
