@@ -4,7 +4,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
+    password: root
     url: jdbc:mysql://localhost:3306/my_db
   jackson:
     property-naming-strategy: SNAKE_CASE  # 将驼峰自动转为蛇形
@@ -19,3 +19,9 @@ mybatis-plus:
       logic-delete-field: isDelete
       logic-delete-value: 1
       logic-not-delete-value: 0
+oss:
+  endpoint: xxx
+  bucket-name: xxx
+  access-key: xxx
+  access-secret: xxx
+  expire-time: 3600
