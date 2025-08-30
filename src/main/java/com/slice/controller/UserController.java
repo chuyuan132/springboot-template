@@ -3,6 +3,7 @@ package com.slice.controller;
 import com.slice.annotation.AuthCheck;
 import com.slice.common.BaseResponse;
 import com.slice.common.ResultUtils;
+import com.slice.dao.file.FileUploadRequest;
 import com.slice.dao.user.UserLoginRequest;
 import com.slice.dao.user.UserRegisterRequest;
 import com.slice.enums.ErrorCode;
@@ -13,10 +14,8 @@ import com.slice.vo.user.LoginUserVO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 用户服务控制层
@@ -46,7 +45,6 @@ public class UserController {
 
 
     @PostMapping("/login")
-    @AuthCheck(mustRole = "admin")
     public BaseResponse<LoginUserVO> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
         if(userLoginRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);

@@ -8,6 +8,10 @@ spring:
     url: jdbc:mysql://localhost:3306/my_db
   jackson:
     property-naming-strategy: SNAKE_CASE  # 将驼峰自动转为蛇形
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 50MB
 server:
   address: 127.0.0.1
   port: 8001
@@ -20,8 +24,8 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
 oss:
-  endpoint: xxx
-  bucket-name: xxx
-  access-key: xxx
-  access-secret: xxx
+  endpoint:
+  bucket-name:
+  access-key:
+  access-secret:
   expire-time: 3600
