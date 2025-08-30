@@ -52,9 +52,9 @@ public class User implements Serializable {
     private String userProfile;
 
     /**
-     * 角色： 1 普通 2 管理员 3 禁用
+     * 角色： 管理员：admin， 封禁：ban
      */
-    private Integer userRole;
+    private String userRole;
 
     /**
      * 创建时间
