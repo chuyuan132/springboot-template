@@ -33,7 +33,7 @@ public class FileController {
         if(params == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-        if(StringUtils.isAnyBlank(params.getFilename(),params.getBiz())) {
+        if(StringUtils.isAnyBlank(params.getBiz())) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
 
@@ -49,13 +49,13 @@ public class FileController {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR,"文件大小超出限制");
         }
 
-        String suffix = FileUtil.getSuffix(multipartFile.getName());
+        String suffix = FileUtil.getSuffix(multipartFile.getOriginalFilename());
         if(!fileUploadEnum.getTypeList().contains(suffix)) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR,"不支持该类型文件");
         }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         String format = LocalDate.now().format(formatter);
-        String uploadKey = String.format("/%s/%s", fileUploadEnum.getType(),format);
+        String uploadKey = String.format("%s/%s", fileUploadEnum.getType(),format);
         String url = ossManager.putObject(uploadKey, multipartFile);
         return ResultUtils.success(url);
     }
