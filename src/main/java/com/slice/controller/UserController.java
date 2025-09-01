@@ -11,6 +11,8 @@ import com.slice.exception.BusinessException;
 import com.slice.exception.ThrowUtils;
 import com.slice.service.UserService;
 import com.slice.vo.user.LoginUserVO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
@@ -23,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 @RequestMapping("/user")
+@Tag(name="用户接口")
 public class UserController {
 
     @Resource
@@ -30,6 +33,7 @@ public class UserController {
 
 
     @PostMapping("/register")
+    @Operation(summary = "用户注册")
     public BaseResponse<Long> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
         if(userRegisterRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -45,6 +49,7 @@ public class UserController {
 
 
     @PostMapping("/login")
+    @Operation(summary = "用户登录")
     public BaseResponse<LoginUserVO> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
         if(userLoginRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);

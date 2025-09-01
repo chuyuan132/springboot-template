@@ -27,7 +27,8 @@ public class OssConfig {
 
     private Long expireTime;
 
-    @Bean public OSS aliOssClient() {
+    @Bean
+    public OSS aliOssClient() {
         return new OSSClientBuilder().build(endpoint, accessKey, accessSecret);
     }
 }

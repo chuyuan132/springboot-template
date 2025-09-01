@@ -16,7 +16,6 @@ server:
   address: 127.0.0.1
   port: 8001
   servlet:
-    context-path: /api
     session:
       cookie:
         max-age: 2592000
@@ -29,8 +28,12 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
 oss:
-  endpoint:
-  bucket-name:
-  access-key:
-  access-secret:
+  endpoint: xx
+  bucket-name: xx
+  access-key: xx
+  access-secret: xx
   expire-time: 3600
+springdoc:
+  swagger-ui:
+    enabled: true
+

@@ -8,6 +8,8 @@ import com.slice.enums.ErrorCode;
 import com.slice.enums.FileUploadEnums;
 import com.slice.exception.BusinessException;
 import com.slice.manager.OssManager;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +23,14 @@ import java.time.format.DateTimeFormatter;
  */
 @RestController
 @RequestMapping("/file")
+@Tag(name="文件服务")
 public class FileController {
 
     @Resource
     private OssManager ossManager;
+
     @PostMapping(value="/upload")
+    @Operation(summary = "文件上传")
     public BaseResponse<String> fileUpload(@RequestParam("file") MultipartFile multipartFile, FileUploadRequest params) {
         if(multipartFile.isEmpty()) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR,"文件为空");
